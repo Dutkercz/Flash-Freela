@@ -21,7 +21,7 @@ public class Empresa {
     private String telefone;
     @Embedded
     private Endereco endereco;
-    private Usuario usuario;
+//    private Usuario usuario;
     @Enumerated(value = EnumType.STRING)
     private Status status;
 
