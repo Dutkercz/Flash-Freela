@@ -19,9 +19,13 @@ public class Empresa {
     private String cnpj;
     private String email;
     private String telefone;
+
     @Embedded
     private Endereco endereco;
-//    private Usuario usuario;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Usuario usuario;
+
     @Enumerated(value = EnumType.STRING)
     private Status status;
 
