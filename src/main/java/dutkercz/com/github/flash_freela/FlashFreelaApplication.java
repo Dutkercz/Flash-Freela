@@ -25,6 +25,5 @@ public class FlashFreelaApplication implements CommandLineRunner {
 		Usuario usuario = new Usuario(null, "usuario", "1234", Role.EMPRESA);
 		Empresa empresa = new Empresa(null, "Nome", "CNPJ", "EMAIL", "TELEFONE", endereco, usuario, Status.ATIVA);
 
-		System.out.println(empresaRepository.findAll());
 	}
 }
