@@ -1,5 +1,8 @@
-package dutkercz.com.github.flash_freela.entities;
+package dutkercz.com.github.flash_freela.entities.empresa;
 
+import dutkercz.com.github.flash_freela.entities.Endereco;
+import dutkercz.com.github.flash_freela.entities.Status;
+import dutkercz.com.github.flash_freela.entities.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,4 +32,8 @@ public class Empresa {
     @Enumerated(value = EnumType.STRING)
     private Status status;
 
+    @PrePersist
+    public void prePersist(){
+        this.status = Status.ATIVA;
+    }
 }

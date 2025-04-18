@@ -1,5 +1,7 @@
 package dutkercz.com.github.flash_freela.infra;
 
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -11,7 +13,12 @@ usando pt-BR. Essa Classe mesmo, que nome bem feio, mas é isso que ela faz. Obr
 public class TratadorDeErros {
 
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<?> erroGenerico(RuntimeException e){
+    public ResponseEntity<?> runtimeError(RuntimeException e){
         return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<?> entityNotFound(EntityNotFoundException e){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 }

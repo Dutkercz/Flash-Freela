@@ -1,10 +1,9 @@
 package dutkercz.com.github.flash_freela.entities;
 
 import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 @Embeddable
 @Getter
@@ -20,4 +19,7 @@ public class Endereco {
     private String cep;
     private String uf;
     private String pais;
+
+    public Endereco(@NotNull @Valid EnderecoDTO endereco) {
+    }
 }
