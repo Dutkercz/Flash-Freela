@@ -1,6 +1,7 @@
 package dutkercz.com.github.flash_freela.entities.empresa;
 
 import dutkercz.com.github.flash_freela.entities.Endereco;
+import dutkercz.com.github.flash_freela.entities.Role;
 import dutkercz.com.github.flash_freela.entities.Status;
 import dutkercz.com.github.flash_freela.entities.Usuario;
 import jakarta.persistence.*;
@@ -18,12 +19,17 @@ public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Setter
     private String nome;
+    @Setter
     private String cnpj;
+    @Setter
     private String email;
+    @Setter
     private String telefone;
 
     @Embedded
+    @Setter
     private Endereco endereco;
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -1,6 +1,5 @@
 package dutkercz.com.github.flash_freela.entities.empresa;
 
-import dutkercz.com.github.flash_freela.entities.Endereco;
 import dutkercz.com.github.flash_freela.entities.EnderecoDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -13,7 +12,7 @@ public record EmpresaCadastroDTO(
         String nome,
 
         @NotBlank(message = "O Campo CNPJ não pode estar em branco.")
-        @Pattern(regexp = "/d{14}", message = "Digite apenas os 14 digitos do CNPJ.")
+        @Pattern(regexp = "\\d{14}", message = "Digite apenas os 14 digitos do CNPJ.")
         String cnpj,
 
         @NotBlank(message = "O campo E-MAIL não pode estar em branco.")

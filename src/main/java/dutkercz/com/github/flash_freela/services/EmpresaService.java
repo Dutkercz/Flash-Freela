@@ -13,11 +13,9 @@ import org.springframework.stereotype.Service;
 public class EmpresaService {
 
     private final EmpresaRepository empresaRepository;
-    private final EmpresaMapper empresaMapper;
 
-    public EmpresaService(EmpresaRepository empresaRepository, EmpresaMapper empresaMapper) {
+    public EmpresaService(EmpresaRepository empresaRepository) {
         this.empresaRepository = empresaRepository;
-        this.empresaMapper = empresaMapper;
     }
 
     public Empresa findById(Long id){
@@ -27,7 +25,7 @@ public class EmpresaService {
 
     @Transactional
     public Empresa cadastro(@Valid EmpresaCadastroDTO cadastroDTO) {
-        Empresa empresa = empresaMapper.toEntity(cadastroDTO);
+        Empresa empresa = EmpresaMapper.toEntity(cadastroDTO);
         return empresaRepository.save(empresa);
     }
 }

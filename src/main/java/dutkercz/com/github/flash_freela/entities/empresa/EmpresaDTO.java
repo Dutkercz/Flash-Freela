@@ -8,6 +8,6 @@ public record EmpresaDTO(String nome,
                          Endereco endereco) {
 
     public EmpresaDTO(Empresa empresa) {
-        this(empresa.getNome(), empresa.getTelefone(), empresa.getEmail(), new Endereco());
+        this(empresa.getNome(), empresa.getTelefone(), empresa.getEmail(), empresa.getEndereco());
     }
 }

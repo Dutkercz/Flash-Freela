@@ -18,11 +18,11 @@ public record EnderecoDTO(
         String cidade,
 
         @NotBlank
-        @Pattern(regexp = "/d{8}", message = "Digite um CEP válido.")
+        @Pattern(regexp = "\\d{8}", message = "Digite um CEP válido.")
         String cep,
 
         @NotBlank
-        @Pattern(regexp = "^{2}$")
+        @Pattern(regexp = "^[A-Z]{2}$", message = "O campo UF deve conter 2 letras MAIÚSCULAS")
         String uf,
 
         @NotBlank
