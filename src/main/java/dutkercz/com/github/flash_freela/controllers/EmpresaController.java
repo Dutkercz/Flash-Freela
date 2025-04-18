@@ -34,7 +34,6 @@ public class EmpresaController {
         Empresa empresa = empresaService.cadastro(cadastroDTO);
         URI uri =builder.path("/empresa/{id}").buildAndExpand(empresa.getId()).toUri();
         return ResponseEntity.created(uri).body(new EmpresaDTO(empresa));
-
     }
 
 }
