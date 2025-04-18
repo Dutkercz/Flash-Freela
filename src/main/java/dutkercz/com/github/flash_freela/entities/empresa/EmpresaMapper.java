@@ -1,6 +1,6 @@
 package dutkercz.com.github.flash_freela.entities.empresa;
 
-import dutkercz.com.github.flash_freela.entities.EnderecoMapper;
+import dutkercz.com.github.flash_freela.entities.endereco.EnderecoMapper;
 
 public interface EmpresaMapper {
 

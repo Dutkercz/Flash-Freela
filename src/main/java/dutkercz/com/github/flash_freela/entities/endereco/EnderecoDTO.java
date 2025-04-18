@@ -1,4 +1,4 @@
-package dutkercz.com.github.flash_freela.entities;
+package dutkercz.com.github.flash_freela.entities.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

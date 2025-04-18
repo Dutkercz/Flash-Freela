@@ -1,6 +1,6 @@
 package dutkercz.com.github.flash_freela.entities.empresa;
 
-import dutkercz.com.github.flash_freela.entities.EnderecoDTO;
+import dutkercz.com.github.flash_freela.entities.endereco.EnderecoDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

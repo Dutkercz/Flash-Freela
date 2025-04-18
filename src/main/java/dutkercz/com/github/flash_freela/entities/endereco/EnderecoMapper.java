@@ -1,4 +1,4 @@
-package dutkercz.com.github.flash_freela.entities;
+package dutkercz.com.github.flash_freela.entities.endereco;
 
 public interface EnderecoMapper {
 
