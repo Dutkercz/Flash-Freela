@@ -4,7 +4,7 @@ import dutkercz.com.github.flash_freela.entities.endereco.EnderecoMapper;
 
 public interface EmpresaMapper {
 
-    static Empresa toEntity(EmpresaCadastroDTO cadastroDTO){
+    static Empresa toEntity(EmpresaCadastroDTO cadastroDTO) {
         Empresa empresa = new Empresa();
 
         empresa.setNome(cadastroDTO.nome());

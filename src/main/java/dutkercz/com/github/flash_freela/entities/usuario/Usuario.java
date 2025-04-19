@@ -1,5 +1,6 @@
-package dutkercz.com.github.flash_freela.entities;
+package dutkercz.com.github.flash_freela.entities.usuario;
 
+import dutkercz.com.github.flash_freela.entities.Role;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,7 +30,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of( new SimpleGrantedAuthority(role.name()));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override

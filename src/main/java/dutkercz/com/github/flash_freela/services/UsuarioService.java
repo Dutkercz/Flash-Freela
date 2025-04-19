@@ -1,9 +1,8 @@
 package dutkercz.com.github.flash_freela.services;
 
-import dutkercz.com.github.flash_freela.controllers.UsuarioController;
-import dutkercz.com.github.flash_freela.entities.Usuario;
-import dutkercz.com.github.flash_freela.entities.UsuarioCadastroDTO;
-import dutkercz.com.github.flash_freela.entities.UsuarioMapper;
+import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
+import dutkercz.com.github.flash_freela.entities.usuario.UsuarioCadastroDTO;
+import dutkercz.com.github.flash_freela.entities.usuario.UsuarioMapper;
 import dutkercz.com.github.flash_freela.repositories.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;

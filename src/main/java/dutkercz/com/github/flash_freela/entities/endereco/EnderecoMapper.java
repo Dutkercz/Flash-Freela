@@ -2,7 +2,7 @@ package dutkercz.com.github.flash_freela.entities.endereco;
 
 public interface EnderecoMapper {
 
-    static Endereco toEntity(EnderecoDTO enderecoDTO){
+    static Endereco toEntity(EnderecoDTO enderecoDTO) {
         return new Endereco(
                 enderecoDTO.rua(), enderecoDTO.numero(),
                 enderecoDTO.bairro(), enderecoDTO.cidade(),

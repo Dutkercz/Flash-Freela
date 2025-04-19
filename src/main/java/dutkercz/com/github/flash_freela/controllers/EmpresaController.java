@@ -5,7 +5,6 @@ import dutkercz.com.github.flash_freela.entities.empresa.EmpresaCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.empresa.EmpresaDTO;
 import dutkercz.com.github.flash_freela.services.EmpresaService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -23,16 +22,16 @@ public class EmpresaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EmpresaDTO> findById(@PathVariable Long id){
+    public ResponseEntity<EmpresaDTO> findById(@PathVariable Long id) {
         EmpresaDTO empresaDTO = new EmpresaDTO(empresaService.findById(id));
         return ResponseEntity.ok().body(empresaDTO);
     }
 
     @PostMapping
     public ResponseEntity<EmpresaDTO> cadastrarEmpresa(@RequestBody @Valid EmpresaCadastroDTO cadastroDTO,
-                                                       UriComponentsBuilder builder){
+                                                       UriComponentsBuilder builder) {
         Empresa empresa = empresaService.cadastro(cadastroDTO);
-        URI uri =builder.path("/empresa/{id}").buildAndExpand(empresa.getId()).toUri();
+        URI uri = builder.path("/empresa/{id}").buildAndExpand(empresa.getId()).toUri();
         return ResponseEntity.created(uri).body(new EmpresaDTO(empresa));
     }
 

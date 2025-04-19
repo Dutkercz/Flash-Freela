@@ -1,8 +1,8 @@
 package dutkercz.com.github.flash_freela.controllers;
 
-import dutkercz.com.github.flash_freela.entities.UsuarioCadastroDTO;
-import dutkercz.com.github.flash_freela.entities.Usuario;
-import dutkercz.com.github.flash_freela.entities.UsuarioDTO;
+import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
+import dutkercz.com.github.flash_freela.entities.usuario.UsuarioCadastroDTO;
+import dutkercz.com.github.flash_freela.entities.usuario.UsuarioDTO;
 import dutkercz.com.github.flash_freela.services.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -26,9 +26,10 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<UsuarioDTO> cadastrarUsuario(@RequestBody @Valid UsuarioCadastroDTO cadastro,
-                                                       UriComponentsBuilder builder){
+                                                       UriComponentsBuilder builder) {
         Usuario usuario = usuarioService.cadastrarNovoUsuario(cadastro);
         URI uri = builder.path("/usuario/{id}").buildAndExpand(usuario.getId()).toUri();
         return ResponseEntity.created(uri).body(new UsuarioDTO(usuario));
     }
+
 }

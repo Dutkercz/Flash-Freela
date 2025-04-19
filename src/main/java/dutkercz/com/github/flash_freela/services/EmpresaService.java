@@ -18,7 +18,7 @@ public class EmpresaService {
         this.empresaRepository = empresaRepository;
     }
 
-    public Empresa findById(Long id){
+    public Empresa findById(Long id) {
         return empresaRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Empresa não encontrada"));
     }

@@ -1,6 +1,6 @@
 package dutkercz.com.github.flash_freela.repositories;
 
-import dutkercz.com.github.flash_freela.entities.Usuario;
+import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 

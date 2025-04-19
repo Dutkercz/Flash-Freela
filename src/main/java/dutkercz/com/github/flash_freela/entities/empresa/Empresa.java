@@ -1,9 +1,8 @@
 package dutkercz.com.github.flash_freela.entities.empresa;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import dutkercz.com.github.flash_freela.entities.endereco.Endereco;
 import dutkercz.com.github.flash_freela.entities.Status;
-import dutkercz.com.github.flash_freela.entities.Usuario;
+import dutkercz.com.github.flash_freela.entities.endereco.Endereco;
+import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,7 +38,7 @@ public class Empresa {
     private Status status;
 
     @PrePersist
-    public void prePersist(){
+    public void prePersist() {
         this.status = Status.ATIVA;
     }
 }
