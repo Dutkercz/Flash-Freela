@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public record EmpresaCadastroDTO(
-        @NotBlank(message = "O Campo nome não pode estar em branco.")
+        @NotBlank(message = "O Campo NOME não pode estar em branco.")
         String nome,
 
         @NotBlank(message = "O Campo CNPJ não pode estar em branco.")

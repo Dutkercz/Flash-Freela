@@ -21,6 +21,7 @@ public class Trabalhador {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    private String cpf;
     private String email;
     private String telefone;
     private LocalDate nascimento;
