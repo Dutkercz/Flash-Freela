@@ -28,4 +28,9 @@ public record EnderecoDTO(
         @NotBlank
         String pais
 ) {
+        public EnderecoDTO(Endereco endereco) {
+                this(endereco.getRua(), endereco.getNumero(), endereco.getBairro(),
+                        endereco.getCidade(), endereco.getCep(), endereco.getUf(),
+                        endereco.getPais());
+        }
 }

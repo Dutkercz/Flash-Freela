@@ -27,6 +27,7 @@ public class TrabalhadorController {
     public ResponseEntity<TrabalhadorDTO> cadastrarTrabalhador(@RequestBody TrabalhadorCadastroDTO cadastroDTO,
                                                                UriComponentsBuilder builder){
         Trabalhador trabalhador = trabalhadorService.cadastro(cadastroDTO);
-        URI uri = builder.path("/trabalhador/{id}").buildAndExpand()
+        URI uri = builder.path("/trabalhador/{id}").buildAndExpand(trabalhador.getId()).toUri();
+        return ResponseEntity.created(uri).body(new TrabalhadorDTO(trabalhador));
     }
 }

@@ -1,5 +1,6 @@
 package dutkercz.com.github.flash_freela.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import dutkercz.com.github.flash_freela.entities.endereco.Endereco;
 import dutkercz.com.github.flash_freela.entities.endereco.EnderecoDTO;
 import jakarta.validation.Valid;
@@ -27,7 +28,7 @@ public record TrabalhadorCadastroDTO(
         String telefone,
 
         @NotNull(message = "O campo NASCIMENTO não pode estar em branco.")
-        @DateTimeFormat(pattern = "dd/MM/yyyy")
+        @JsonFormat(pattern = "dd/MM/yyyy")
         LocalDate nascimento,
 
         @NotNull(message = "Vefifique os dados do endereço.")
