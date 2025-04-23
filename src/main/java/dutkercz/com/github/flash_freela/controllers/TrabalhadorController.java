@@ -5,6 +5,7 @@ import dutkercz.com.github.flash_freela.entities.TrabalhadorCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.TrabalhadorDTO;
 import dutkercz.com.github.flash_freela.services.TrabalhadorService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +27,8 @@ public class TrabalhadorController {
     @PostMapping
     public ResponseEntity<TrabalhadorDTO> cadastrarTrabalhador(@RequestBody TrabalhadorCadastroDTO cadastroDTO,
                                                                UriComponentsBuilder builder){
-        Trabalhador trabalhador = trabalhadorService.cadastro(cadastroDTO);
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Trabalhador trabalhador = trabalhadorService.cadastro(cadastroDTO, username);
         URI uri = builder.path("/trabalhador/{id}").buildAndExpand(trabalhador.getId()).toUri();
         return ResponseEntity.created(uri).body(new TrabalhadorDTO(trabalhador));
     }

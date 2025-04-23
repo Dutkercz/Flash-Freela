@@ -1,6 +1,7 @@
 package dutkercz.com.github.flash_freela.entities;
 
 import dutkercz.com.github.flash_freela.entities.endereco.Endereco;
+import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -20,6 +21,7 @@ public class Trabalhador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String cpf;
     private String email;
@@ -27,6 +29,13 @@ public class Trabalhador {
     private LocalDate nascimento;
     private Double avaliacao;
     private Integer totalDeTrabalhos;
+
+    @Embedded
     private Endereco endereco;
+
+    @Enumerated(value = EnumType.STRING)
     private Role role;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Usuario usuario;
 }

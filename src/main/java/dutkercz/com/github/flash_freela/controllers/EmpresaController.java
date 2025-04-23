@@ -6,6 +6,7 @@ import dutkercz.com.github.flash_freela.entities.empresa.EmpresaDTO;
 import dutkercz.com.github.flash_freela.services.EmpresaService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -30,7 +31,8 @@ public class EmpresaController {
     @PostMapping
     public ResponseEntity<EmpresaDTO> cadastrarEmpresa(@RequestBody @Valid EmpresaCadastroDTO cadastroDTO,
                                                        UriComponentsBuilder builder) {
-        Empresa empresa = empresaService.cadastro(cadastroDTO);
+        String user = SecurityContextHolder.getContext().getAuthentication().getName();
+        Empresa empresa = empresaService.cadastro(cadastroDTO, user);
         URI uri = builder.path("/empresa/{id}").buildAndExpand(empresa.getId()).toUri();
         return ResponseEntity.created(uri).body(new EmpresaDTO(empresa));
     }

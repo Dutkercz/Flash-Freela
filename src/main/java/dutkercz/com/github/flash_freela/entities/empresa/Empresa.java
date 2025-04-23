@@ -18,17 +18,16 @@ public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Setter
+
     private String nome;
-    @Setter
+
     private String cnpj;
-    @Setter
+
     private String email;
-    @Setter
+
     private String telefone;
 
     @Embedded
-    @Setter
     private Endereco endereco;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -36,9 +35,4 @@ public class Empresa {
 
     @Enumerated(value = EnumType.STRING)
     private Status status;
-
-    @PrePersist
-    public void prePersist() {
-        this.status = Status.ATIVA;
-    }
 }

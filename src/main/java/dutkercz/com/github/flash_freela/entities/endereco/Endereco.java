@@ -23,6 +23,7 @@ public class Endereco {
     private String uf;
     private String pais;
 
-    public Endereco(@NotNull @Valid EnderecoDTO endereco) {
+    public Endereco(@NotNull @Valid EnderecoDTO enderecoDTO) {
+        EnderecoMapper.toEntity(enderecoDTO);
     }
 }
