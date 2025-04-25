@@ -32,6 +32,7 @@ public class EmpresaController {
     public ResponseEntity<EmpresaDTO> cadastrarEmpresa(@RequestBody @Valid EmpresaCadastroDTO cadastroDTO,
                                                        UriComponentsBuilder builder) {
         String user = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println(user);
         Empresa empresa = empresaService.cadastro(cadastroDTO, user);
         URI uri = builder.path("/empresa/{id}").buildAndExpand(empresa.getId()).toUri();
         return ResponseEntity.created(uri).body(new EmpresaDTO(empresa));

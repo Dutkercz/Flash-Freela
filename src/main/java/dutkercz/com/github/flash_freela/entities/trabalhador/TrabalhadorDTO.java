@@ -6,6 +6,7 @@ public record TrabalhadorDTO(
         String nome,
         String telefone,
         EnderecoDTO enderecoDTO) {
+
     public TrabalhadorDTO(Trabalhador trabalhador) {
         this(trabalhador.getNome(), trabalhador.getTelefone(),
                 new EnderecoDTO(trabalhador.getEndereco()));

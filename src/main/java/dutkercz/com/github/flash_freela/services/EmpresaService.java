@@ -31,7 +31,6 @@ public class EmpresaService {
     public Empresa cadastro(@Valid EmpresaCadastroDTO cadastroDTO, String username) {
         Usuario usuario = (Usuario) usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
-        Empresa empresa = EmpresaMapper.toEntity(cadastroDTO, usuario);
-        return empresaRepository.save(empresa);
+        return empresaRepository.save(EmpresaMapper.toEntity(cadastroDTO, usuario));
     }
 }

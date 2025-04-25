@@ -24,6 +24,12 @@ public class Endereco {
     private String pais;
 
     public Endereco(@NotNull @Valid EnderecoDTO enderecoDTO) {
-        EnderecoMapper.toEntity(enderecoDTO);
+        this.rua = enderecoDTO.rua();
+        this.numero = enderecoDTO.numero();
+        this.bairro = enderecoDTO.bairro();
+        this.cidade = enderecoDTO.cidade();
+        this.cep = enderecoDTO.cep();
+        this.uf = enderecoDTO.uf();
+        this.pais = enderecoDTO.pais();
     }
 }
