@@ -1,8 +1,8 @@
 package dutkercz.com.github.flash_freela.controllers;
 
-import dutkercz.com.github.flash_freela.entities.Trabalhador;
-import dutkercz.com.github.flash_freela.entities.TrabalhadorCadastroDTO;
-import dutkercz.com.github.flash_freela.entities.TrabalhadorDTO;
+import dutkercz.com.github.flash_freela.entities.trabalhador.Trabalhador;
+import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorCadastroDTO;
+import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorDTO;
 import dutkercz.com.github.flash_freela.services.TrabalhadorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -1,8 +1,8 @@
 package dutkercz.com.github.flash_freela.services;
 
-import dutkercz.com.github.flash_freela.entities.Trabalhador;
-import dutkercz.com.github.flash_freela.entities.TrabalhadorCadastroDTO;
-import dutkercz.com.github.flash_freela.entities.TrabalhadorMapper;
+import dutkercz.com.github.flash_freela.entities.trabalhador.Trabalhador;
+import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorCadastroDTO;
+import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorMapper;
 import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
 import dutkercz.com.github.flash_freela.repositories.TrabalhadorRepository;
 import dutkercz.com.github.flash_freela.repositories.UsuarioRepository;

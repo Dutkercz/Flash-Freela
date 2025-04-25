@@ -2,7 +2,7 @@ create table trabalhador (
     id bigint primary key auto_increment,
     nome varchar(255) not null,
     cpf varchar(11) not null unique,
-    email varchar(255) not null,
+    email varchar(255) not null unique,
     telefone varchar(20) not null,
     nascimento date not null,
     avaliacao double default 0.0,
@@ -14,6 +14,6 @@ create table trabalhador (
     cep varchar(8) not null,
     uf varchar(2) not null,
     pais varchar(100) not null,
-    status varchar(10) not null,
+    status varchar(10) not null
 
 );
