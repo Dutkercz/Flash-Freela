@@ -31,6 +31,7 @@ public class TrabalhadorController {
         return ResponseEntity.created(uri).body(new TrabalhadorDTO(trabalhador));
     }
 
+    @DeleteMapping
     public ResponseEntity<?> deletarMinhaConta(){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         trabalhadorService.deleteMyAccount(username);

@@ -8,6 +8,10 @@ import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Date;
+
 @Service
 public class JWTService {
     @Value("${algoritmo.password}")
@@ -19,6 +23,7 @@ public class JWTService {
             return JWT.create()
                     .withIssuer("Flash-Freela")
                     .withSubject(usuario.getUsername())
+                    .withExpiresAt(ExpiracaoToken.expiresToken())
                     .sign(algorithm);
         } catch (IllegalArgumentException | JWTCreationException e) {
             throw new RuntimeException("Erro ao criar o Token" + e.getMessage());
