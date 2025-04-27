@@ -1,5 +1,6 @@
 package dutkercz.com.github.flash_freela.services;
 
+import dutkercz.com.github.flash_freela.entities.Status;
 import dutkercz.com.github.flash_freela.entities.empresa.Empresa;
 import dutkercz.com.github.flash_freela.entities.empresa.EmpresaCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.empresa.EmpresaMapper;
@@ -9,6 +10,7 @@ import dutkercz.com.github.flash_freela.repositories.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,6 +34,15 @@ public class EmpresaService {
         Usuario usuario = (Usuario) usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
         return empresaRepository.save(EmpresaMapper.toEntity(cadastroDTO, usuario));
+    }
+
+    @Transactional
+    public void deleteMyEmpresa(String username){
+        Usuario usuario =(Usuario) usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Usuario não encontrado."));
+        Empresa empresa = empresaRepository.findEmpresaByUsuarioIdAndStatus(usuario.getId(), Status.ATIVA)
+                .orElseThrow(() -> new EntityNotFoundException("Empresa não encontrada!"));
+        empresa.setInativa();
     }
 
 }
