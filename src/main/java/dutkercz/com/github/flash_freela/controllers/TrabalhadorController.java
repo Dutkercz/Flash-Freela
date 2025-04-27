@@ -33,12 +33,9 @@ public class TrabalhadorController {
 
     public ResponseEntity<?> deletarMinhaConta(){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        Trabalhador trabalhador =  trabalhadorService.deleteMyAccount(username);
-        if (trabalhador != null){
-            return ResponseEntity.noContent().build();
-        }else {
-            return ResponseEntity.notFound().build()
-        }
+        trabalhadorService.deleteMyAccount(username);
+        return ResponseEntity.noContent().build();
+
 
     }
 }

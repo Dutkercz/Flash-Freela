@@ -33,4 +33,5 @@ public class EmpresaService {
                 .orElseThrow(() -> new EntityNotFoundException("Usuário não encontrado"));
         return empresaRepository.save(EmpresaMapper.toEntity(cadastroDTO, usuario));
     }
+
 }
