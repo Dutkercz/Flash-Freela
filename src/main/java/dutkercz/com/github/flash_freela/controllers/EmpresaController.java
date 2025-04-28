@@ -5,6 +5,8 @@ import dutkercz.com.github.flash_freela.entities.empresa.EmpresaCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.empresa.EmpresaDTO;
 import dutkercz.com.github.flash_freela.services.EmpresaService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
@@ -31,13 +33,23 @@ public class EmpresaController {
     @PostMapping
     public ResponseEntity<EmpresaDTO> cadastrarEmpresa(@RequestBody @Valid EmpresaCadastroDTO cadastroDTO,
                                                        UriComponentsBuilder builder) {
-        String user = SecurityContextHolder.getContext().getAuthentication().getName();
-        System.out.println(user);
-        Empresa empresa = empresaService.cadastro(cadastroDTO, user);
+        String usuario = SecurityContextHolder.getContext().getAuthentication().getName();
+        System.out.println(usuario);
+        Empresa empresa = empresaService.cadastro(cadastroDTO, usuario);
         URI uri = builder.path("/empresa/{id}").buildAndExpand(empresa.getId()).toUri();
         return ResponseEntity.created(uri).body(new EmpresaDTO(empresa));
     }
 
+    @DeleteMapping
+    public ResponseEntity<?> deletarMeuCadastroEmpresa(){
+        String usuario = SecurityContextHolder.getContext().getAuthentication().getName();
+        empresaService.deleteMeuCadastro(usuario);
+        return ResponseEntity.noContent().build();
+    }
 
-
+    @GetMapping("/all")
+    public ResponseEntity<Page<EmpresaDTO>> listarEmpresas(Pageable pageable){
+        Page<EmpresaDTO> empresaDTOS = empresaService.findAllAtivo(pageable).map(EmpresaDTO::new);
+        return ResponseEntity.ok(empresaDTOS);
+    }
 }

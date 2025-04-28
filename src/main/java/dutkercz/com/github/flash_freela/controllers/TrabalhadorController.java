@@ -3,7 +3,6 @@ package dutkercz.com.github.flash_freela.controllers;
 import dutkercz.com.github.flash_freela.entities.trabalhador.Trabalhador;
 import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorDTO;
-import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
 import dutkercz.com.github.flash_freela.services.TrabalhadorService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -32,11 +31,11 @@ public class TrabalhadorController {
     }
 
     @DeleteMapping
-    public ResponseEntity<?> deletarMinhaConta(){
+    public ResponseEntity<?> deletarMeuCadastroTrabalhador(){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        trabalhadorService.deleteMyAccount(username);
+        trabalhadorService.deleteMeuCadastro(username);
         return ResponseEntity.noContent().build();
-
-
     }
+
+
 }

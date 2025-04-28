@@ -10,6 +10,8 @@ import dutkercz.com.github.flash_freela.repositories.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +39,7 @@ public class EmpresaService {
     }
 
     @Transactional
-    public void deleteMyEmpresa(String username){
+    public void deleteMeuCadastro(String username){
         Usuario usuario =(Usuario) usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario não encontrado."));
         Empresa empresa = empresaRepository.findEmpresaByUsuarioIdAndStatus(usuario.getId(), Status.ATIVA)
@@ -45,4 +47,7 @@ public class EmpresaService {
         empresa.setInativa();
     }
 
+    public Page<Empresa> findAllAtivo(Pageable pageable) {
+        return empresaRepository.findAllByStatus(Status.ATIVA, pageable);
+    }
 }

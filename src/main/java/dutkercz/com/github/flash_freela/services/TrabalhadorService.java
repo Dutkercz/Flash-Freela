@@ -31,7 +31,7 @@ public class TrabalhadorService {
     }
 
     @Transactional
-    public void deleteMyAccount(String username) {
+    public void deleteMeuCadastro(String username) {
         Usuario usuario =(Usuario) usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuario não encontrado."));
 
