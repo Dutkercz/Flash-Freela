@@ -9,8 +9,11 @@ import dutkercz.com.github.flash_freela.repositories.TrabalhadorRepository;
 import dutkercz.com.github.flash_freela.repositories.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
+
 
 @Service
 public class TrabalhadorService {
@@ -39,5 +42,9 @@ public class TrabalhadorService {
                 .orElseThrow(() -> new EntityNotFoundException("Cadastro não encontrado, ou está inativo."));
 
         trabalhador.setInativa();
+    }
+
+    public Page<Trabalhador> findAllAtivo(Pageable pageable) {
+        return trabalhadorRepository.findAllByStatus(Status.ATIVA, pageable);
     }
 }
