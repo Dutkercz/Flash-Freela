@@ -1,7 +1,7 @@
 package dutkercz.com.github.flash_freela.entities.trabalhador;
 
-import dutkercz.com.github.flash_freela.entities.Role;
-import dutkercz.com.github.flash_freela.entities.Status;
+import dutkercz.com.github.flash_freela.entities.enums.Role;
+import dutkercz.com.github.flash_freela.entities.enums.Status;
 import dutkercz.com.github.flash_freela.entities.endereco.Endereco;
 import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
 

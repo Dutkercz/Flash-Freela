@@ -1,6 +1,6 @@
 package dutkercz.com.github.flash_freela.services;
 
-import dutkercz.com.github.flash_freela.entities.Status;
+import dutkercz.com.github.flash_freela.entities.enums.Status;
 import dutkercz.com.github.flash_freela.entities.empresa.Empresa;
 import dutkercz.com.github.flash_freela.entities.empresa.EmpresaCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.empresa.EmpresaMapper;
