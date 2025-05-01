@@ -32,7 +32,7 @@ public class Contrato {
     private Double valor;
 
     @Enumerated(value = EnumType.STRING)
-    private StatusContrato status;
+    private StatusContrato statusContrato;
 
     private LocalDate dataInicio;
     private LocalDate dataFim;

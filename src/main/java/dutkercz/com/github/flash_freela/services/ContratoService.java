@@ -5,12 +5,15 @@ import dutkercz.com.github.flash_freela.entities.contrato.ContratoCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.contrato.ContratoMapper;
 import dutkercz.com.github.flash_freela.entities.empresa.Empresa;
 import dutkercz.com.github.flash_freela.entities.enums.Status;
+import dutkercz.com.github.flash_freela.entities.enums.StatusContrato;
 import dutkercz.com.github.flash_freela.entities.usuario.Usuario;
 import dutkercz.com.github.flash_freela.repositories.ContratoRepository;
 import dutkercz.com.github.flash_freela.repositories.EmpresaRepository;
 import dutkercz.com.github.flash_freela.repositories.UsuarioRepository;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -36,5 +39,9 @@ public class ContratoService {
                 .orElseThrow(() -> new EntityNotFoundException("Empresa não encontrada!"));
 
         return contratoRepository.save(ContratoMapper.toEntity(cadastroDTO, empresa));
+    }
+
+    public Page<Contrato> findByStatus(Pageable pageable) {
+        return contratoRepository.findAllByStatusContrato(StatusContrato.DISPONIVEL, pageable);
     }
 }
