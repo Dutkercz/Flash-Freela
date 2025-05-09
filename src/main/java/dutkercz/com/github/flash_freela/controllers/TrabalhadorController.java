@@ -30,6 +30,11 @@ public class TrabalhadorController {
         return ResponseEntity.created(uri).body(new TrabalhadorDTO(trabalhador));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> procurarTrabalhadorPeloId(@PathVariable Long id){
+        return ResponseEntity.ok(new TrabalhadorDTO(trabalhadorService.procurarPorId(id)));
+    }
+
     @DeleteMapping
     public ResponseEntity<?> deletarMeuCadastroTrabalhador(){
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
