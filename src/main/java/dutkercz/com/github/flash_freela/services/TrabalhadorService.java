@@ -40,9 +40,4 @@ public class TrabalhadorService {
 
         trabalhador.setInativa();
     }
-
-    public Trabalhador procurarPorId(Long id) {
-        return trabalhadorRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Cadastro não encontrado, ou está inativo."));
-    }
 }
