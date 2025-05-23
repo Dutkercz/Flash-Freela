@@ -3,8 +3,8 @@ package dutkercz.com.github.flash_freela.controllers;
 import dutkercz.com.github.flash_freela.entities.contrato.Contrato;
 import dutkercz.com.github.flash_freela.entities.contrato.ContratoCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.contrato.ContratoDTO;
-import dutkercz.com.github.flash_freela.repositories.ContratoRepository;
 import dutkercz.com.github.flash_freela.services.ContratoService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +15,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/contrato")
+@RequestMapping("/contratos")
 public class ContratoController {
 
     private final ContratoService contratoService;
