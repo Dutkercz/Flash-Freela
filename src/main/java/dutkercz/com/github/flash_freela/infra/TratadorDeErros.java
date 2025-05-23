@@ -1,5 +1,7 @@
 package dutkercz.com.github.flash_freela.infra;
 
+import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,11 @@ public class TratadorDeErros {
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> runtimeError(RuntimeException e) {
         return ResponseEntity.badRequest().body(e.getMessage());
+    }
+
+    @ExceptionHandler(JWTVerificationException.class)
+    public ResponseEntity<?> tokenExpired(JWTVerificationException e){
+        return ResponseEntity.badRequest().body(new JWTVerificationException("Token expirado "+ e.getMessage() ));
     }
 
     @ExceptionHandler(EntityNotFoundException.class)

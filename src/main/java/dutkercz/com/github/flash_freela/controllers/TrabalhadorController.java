@@ -3,7 +3,9 @@ package dutkercz.com.github.flash_freela.controllers;
 import dutkercz.com.github.flash_freela.entities.trabalhador.Trabalhador;
 import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorCadastroDTO;
 import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorDTO;
+import dutkercz.com.github.flash_freela.entities.trabalhador.TrabalhadorUpdateDTO;
 import dutkercz.com.github.flash_freela.services.TrabalhadorService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +16,7 @@ import org.springframework.data.domain.Pageable;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/trabalhador")
+@RequestMapping("/trabalhadores")
 public class TrabalhadorController {
 
     private final TrabalhadorService trabalhadorService;
@@ -33,8 +35,9 @@ public class TrabalhadorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> procurarTrabalhadorPeloId(@PathVariable Long id){
-        return ResponseEntity.ok(new TrabalhadorDTO(trabalhadorService.procurarPorId(id)));
+    public ResponseEntity<TrabalhadorDTO> procurarTrabalhadorPeloId(@PathVariable Long id){
+        Trabalhador trabalhador = trabalhadorService.procurarPorId(id);
+        return ResponseEntity.ok(new TrabalhadorDTO(trabalhador));
     }
 
     @DeleteMapping
@@ -42,6 +45,13 @@ public class TrabalhadorController {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         trabalhadorService.deleteMeuCadastro(username);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping
+    public ResponseEntity<TrabalhadorDTO> editaCadastroTrabalhador(@RequestBody @Valid TrabalhadorUpdateDTO cadastroDTO){
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Trabalhador trabalhador = trabalhadorService.updateTrabalhador(username, cadastroDTO);
+        return ResponseEntity.ok().body(new TrabalhadorDTO(trabalhador));
     }
 
     @GetMapping("/all")

@@ -19,7 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarios")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
@@ -32,7 +32,7 @@ public class UsuarioController {
         this.authenticationManager = authenticationManager;
     }
 
-    @PostMapping("/cadastro")
+    @PostMapping
     public ResponseEntity<UsuarioDTO> cadastrarUsuario(@RequestBody @Valid UsuarioCadastroDTO cadastro,
                                                        UriComponentsBuilder builder) {
         Usuario usuario = usuarioService.cadastrarNovoUsuario(cadastro);

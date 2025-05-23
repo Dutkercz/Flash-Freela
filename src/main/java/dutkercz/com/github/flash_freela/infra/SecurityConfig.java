@@ -17,9 +17,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class SecurityConfig {
     private final SecurityFilter securityFilter;
+    private final JwtAuthEntryPoint entryPoint;
 
-    public SecurityConfig(SecurityFilter securityFilter) {
+    public SecurityConfig(SecurityFilter securityFilter, JwtAuthEntryPoint entryPoint) {
         this.securityFilter = securityFilter;
+        this.entryPoint = entryPoint;
     }
 
     @Bean
@@ -27,7 +29,14 @@ public class SecurityConfig {
         try {
             return security.csrf(AbstractHttpConfigurer::disable)
                     .sessionManagement(x -> x.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                    .authorizeHttpRequests(x ->
+                    {
+                        x.requestMatchers("/usuarios/**").permitAll();
+                        x.anyRequest().authenticated();
+                    })
                     .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
+                    .exceptionHandling(x ->
+                           x.authenticationEntryPoint(entryPoint))
                     .build();
         } catch (Exception e) {
             throw new RuntimeException(e);

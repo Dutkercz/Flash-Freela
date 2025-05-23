@@ -32,4 +32,29 @@ public class Endereco {
         this.uf = enderecoDTO.uf();
         this.pais = enderecoDTO.pais();
     }
+
+    public void atualizarEndereco(@Valid EnderecoUpdateDTO endereco) {
+        if (endereco.rua() != null && !endereco.rua().isEmpty()){
+            this.rua = endereco.rua();
+        }
+        if (endereco.numero() != null && !endereco.numero().isEmpty()){
+            this.numero = endereco.numero();
+        }
+        if (endereco.bairro() != null && !endereco.bairro().isEmpty()){
+            this.bairro = endereco.bairro();
+        }
+        if (endereco.cidade() != null && !endereco.cidade().isEmpty()){
+            this.cidade = endereco.cidade();
+        }
+        if (endereco.cep() != null && !endereco.cep().isEmpty()){
+            this.cep = endereco.cep();
+        }
+        if (endereco.uf() != null && !endereco.uf().isEmpty()){
+            this.uf = endereco.uf();
+        }
+        if (endereco.pais() != null && !endereco.pais().isEmpty()){
+            this.pais = endereco.pais();
+        }
+
+    }
 }
