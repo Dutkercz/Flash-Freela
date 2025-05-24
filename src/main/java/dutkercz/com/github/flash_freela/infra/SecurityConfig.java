@@ -32,6 +32,7 @@ public class SecurityConfig {
                     .authorizeHttpRequests(x ->
                     {
                         x.requestMatchers("/usuarios/**").permitAll();
+                        x.requestMatchers("/email/**").permitAll();
                         x.anyRequest().authenticated();
                     })
                     .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

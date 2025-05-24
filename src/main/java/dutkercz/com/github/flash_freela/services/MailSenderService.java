@@ -10,7 +10,7 @@ public class MailSenderService {
 
     private final JavaMailSender mailSender;
 
-    @Value("${spring.mail.username}")
+    @Value("${MEU_EMAIL}")
     private String meuEmail;
 
     public MailSenderService(JavaMailSender mailSender) {
@@ -23,6 +23,8 @@ public class MailSenderService {
         mailMessage.setSubject(assunto);
         mailMessage.setText(corpo);
         mailMessage.setFrom(meuEmail);
+        System.out.println(meuEmail);
+        System.out.println("Para:" + para + "   Assunto:" + assunto + "    Corpo:" + corpo);
 
         mailSender.send(mailMessage);
     }
