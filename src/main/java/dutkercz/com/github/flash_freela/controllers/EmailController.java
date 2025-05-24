@@ -22,7 +22,7 @@ public class EmailController {
 
     @PostMapping
     public ResponseEntity<EmailResponse> enviarEmail(@Valid @RequestBody EmailRequest request){
-        mailSenderService.enviarEmail(request.para(), request.assunto(), request.assunto());
+        mailSenderService.enviarEmail(request.para(), request.assunto(), request.corpo());
         return ResponseEntity.ok(new EmailResponse("Email enviado para " + request.para()));
 
     }
